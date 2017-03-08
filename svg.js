@@ -9,28 +9,25 @@
             var u = 1;
             
 var draw = function(event){
-               clear();
                var e = document.createElementNS("http://www.w3.org/2000/svg","circle");	
 	       e.setAttribute("cx", c );
 	       e.setAttribute("cy", d);
 	       e.setAttribute("r",u);
-	       e.setAttribute("fill","purple");
+               e.setAttribute("fill","purple");
+               e.addEventListener('click', colar);
 	       a.appendChild(e);
-	       u += f;
-               if(u == c || u == d){
-	          f = -1;
-	       }
-	       if(u == 0){
-	          f = 1;
-	       }
-	       rid = window.requestAnimationFrame( draw );
-	    }
+}
+
+var colar = function(event){
+    e.setAttribute("fill", "red");
+}
+
 
 var dvder = function(event){
                var h = 0;
     var i = 0;
     var j = 0;
-    var k -0;
+    var k = 0;
                var dver = function(event){
                     clear();
                     var n = document.createElementNS("http://www.w3.org/2000/svg","image");	
@@ -70,6 +67,7 @@ var dvder = function(event){
                     }
                     rid = window.requestAnimationFrame( dver );
                }
+}
 
 var clear = function(event){
     while(a.hasChildNodes()){
