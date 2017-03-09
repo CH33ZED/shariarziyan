@@ -3,7 +3,22 @@ var height = svgbox.getAttribute('height');
 var width  =svgbox.getAttribute('width');
 
 
+var draw = function(event){
+    var e = document.createElementNS("http://www.w3.org/2000/svg","circle");
+    var c = event.clientX;
+    var d = event.clientY;
 
+	       e.setAttribute("cx", c );
+	       e.setAttribute("cy", d);
+	       e.setAttribute("r",10);
+               e.setAttribute("fill","purple");
+               e.addEventListener('click', colar);
+	       svgbox.appendChild(e);
+}
+
+var colar = function(event){
+    e.setAttribute("fill", "red");
+}
 
 
 var clearSVG = function () {
@@ -101,5 +116,5 @@ var stop = function(){
 
 document.getElementById("dvd").addEventListener("click", bouncy);
 document.getElementById("stop").addEventListener("click", stop);
-document.getElementById("circle").addEventListener("click", animateCircle);
+document.getElementById("vimage").addEventListener("click", draw);
 document.getElementById("clear").addEventListener("click", clearSVG);
