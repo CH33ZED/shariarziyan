@@ -47,6 +47,30 @@ function bouncy() {
     bouncebounce();
 };
 
+var half = function(event){
+    if (this.getAttribute("cx") == width/2){
+	if(this.getAttribute("r") <= 1){
+             svgbox.removeChild(this);
+	}
+	this.setAttribute("r", parseInt(this.getAttribute("r"))/2);
+	var u = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        var c = event.clientX - 10;
+        var d = event.clientY - 10;
+        u.setAttribute("cx", c);
+        u.setAttribute("cy", d);
+        u.setAttribute("r", 20);
+        u.setAttribute("fill", "purple");
+        u.setAttribute('counter', 0);
+        u.setAttribute('dy', 1);
+        u.setAttribute('dx', 1);
+        u.addEventListener("click", colar, false);
+        u.addEventListener("click", dedboi);
+        svgbox.appendChild(u);
+    }
+}
+
+    
+	
 var colar = function(event) {
     this.setAttribute("fill", "red");
     var counter = parseInt(this.getAttribute('counter'));
