@@ -4,22 +4,23 @@ var width  =svgbox.getAttribute('width');
 
 
 var draw = function(event){
-    var e = document.createElementNS("http://www.w3.org/2000/svg","circle");
-    var c = event.clientX;
-    var d = event.clientY;
-
-	       e.setAttribute("cx", c );
-	       e.setAttribute("cy", d);
-	       e.setAttribute("r",10);
-               e.setAttribute("fill","purple");
-               e.addEventListener('click', colar);
-	       svgbox.appendChild(e);
+        if(event.currentTarget == event.target){
+               var u = document.createElementNS("http://www.w3.org/2000/svg","circle");
+               var c = event.clientX - 10;
+               var d = event.clientY - 10;
+               u.setAttribute("cx", c );
+	       u.setAttribute("cy", d);
+	       u.setAttribute("r",20);
+               u.setAttribute("fill","purple");
+               u.addEventListener("click", colar, false);
+	       svgbox.appendChild(u);
+        }
 }
+
 
 var colar = function(event){
-    e.setAttribute("fill", "red");
+    this.setAttribute("fill", "red");
 }
-
 
 var clearSVG = function () {
  window.cancelAnimationFrame(rid)
@@ -116,5 +117,5 @@ var stop = function(){
 
 document.getElementById("dvd").addEventListener("click", bouncy);
 document.getElementById("stop").addEventListener("click", stop);
-document.getElementById("vimage").addEventListener("click", draw);
+document.getElementById("vimage").addEventListener("click", draw, true);
 document.getElementById("clear").addEventListener("click", clearSVG);
