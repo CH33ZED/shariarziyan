@@ -41,31 +41,34 @@ function bouncy() {
             ypos += dy;
             circles[i].setAttribute('cx', xpos);
             circles[i].setAttribute('cy', ypos);
+            half(circles[i]);
         }
         rid = requestAnimationFrame(bouncebounce);
     }
     bouncebounce();
 };
 
-var half = function(event){
-    if (this.getAttribute("cx") == width/2){
-	if(this.getAttribute("r") <= 1){
-             svgbox.removeChild(this);
+var half = function(a){
+    if (a.getAttribute("cx") == width/2){
+	if(a.getAttribute("r") <= 1){
+             svgbox.removeChild(a);
 	}
-	this.setAttribute("r", parseInt(this.getAttribute("r"))/2);
-	var u = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-        var c = event.clientX - 10;
-        var d = event.clientY - 10;
-        u.setAttribute("cx", c);
-        u.setAttribute("cy", d);
-        u.setAttribute("r", 20);
-        u.setAttribute("fill", "purple");
-        u.setAttribute('counter', 0);
-        u.setAttribute('dy', 1);
-        u.setAttribute('dx', 1);
-        u.addEventListener("click", colar, false);
-        u.addEventListener("click", dedboi);
-        svgbox.appendChild(u);
+        else{
+  	   a.setAttribute("r", parseInt(a.getAttribute("r"))/2);
+	   var u = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+           var c = parseInt(a.getAttribute("cx")) - 9;
+           var d = parseInt(a.getAttribute("cy")) - 9;
+           u.setAttribute("cx", c);
+           u.setAttribute("cy", d);
+           u.setAttribute("r", parseInt(a.getAttribute("r")));
+           u.setAttribute("fill", "purple");
+           u.setAttribute('counter', 0);
+           u.setAttribute('dy', -1);
+           u.setAttribute('dx', -1);
+           u.addEventListener("click", colar, false);
+           u.addEventListener("click", dedboi);
+           svgbox.appendChild(u);
+        }
     }
 }
 
